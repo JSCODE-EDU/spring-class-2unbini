@@ -1,10 +1,10 @@
-package com.jscode.simpleproductapi.product;
+package com.jscode.simpleproductapi.dto;
 
 public class Product {
-    final int id;
-    final String name;
-    final boolean isOnSale;
-    final int cost;
+    public final int id;
+    public final String name;
+    public final boolean isOnSale;
+    public final int cost;
 
     public Product(int id, String name, boolean isOnSale, int cost) {
         this.id = id;

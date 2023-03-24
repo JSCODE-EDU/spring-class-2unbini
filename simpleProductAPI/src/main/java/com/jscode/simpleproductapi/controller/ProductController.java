@@ -1,5 +1,7 @@
-package com.jscode.simpleproductapi.product;
+package com.jscode.simpleproductapi.controller;
 
+import com.jscode.simpleproductapi.dto.Product;
+import com.jscode.simpleproductapi.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,5 +1,7 @@
-package com.jscode.simpleproductapi.product;
+package com.jscode.simpleproductapi.service;
 
+import com.jscode.simpleproductapi.dto.Product;
+import com.jscode.simpleproductapi.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service

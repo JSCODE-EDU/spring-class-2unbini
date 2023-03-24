@@ -1,5 +1,6 @@
-package com.jscode.simpleproductapi.product;
+package com.jscode.simpleproductapi.repository;
 
+import com.jscode.simpleproductapi.dto.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
