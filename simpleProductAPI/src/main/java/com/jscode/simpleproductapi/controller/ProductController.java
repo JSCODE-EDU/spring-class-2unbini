@@ -23,8 +23,8 @@ public class ProductController {
         return productService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Product getProductInformationWithID(@PathVariable Long id) {
+    @GetMapping("")
+    public Product getProductInformationWithID(@RequestParam Long id) {
         Product product;
 
         try {
