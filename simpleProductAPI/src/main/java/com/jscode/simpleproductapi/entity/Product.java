@@ -1,9 +1,12 @@
 package com.jscode.simpleproductapi.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Table
 @Entity
+@Getter
 public class Product {
 
     @Id

@@ -1,5 +1,6 @@
 package com.jscode.simpleproductapi.controller;
 
+import com.jscode.simpleproductapi.dto.SimpleProduct;
 import com.jscode.simpleproductapi.entity.Product;
 import com.jscode.simpleproductapi.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +20,13 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public List<Product> getAllProducts() {
+    public List<SimpleProduct> getAllProducts() {
         return productService.findAll();
     }
 
-    @GetMapping("")
-    public Product getProductInformationWithID(@RequestParam Long id) {
-        Product product;
+    @GetMapping("/{id}")
+    public SimpleProduct getProductInformationWithID(@PathVariable Long id) {
+        SimpleProduct product;
 
         try {
             product = productService.getProductInformationWithID(id);
@@ -36,17 +37,21 @@ public class ProductController {
         return product;
     }
 
-    @PostMapping("")
-    public Product postNewProduct(@RequestBody Product newProduct) {
-        Product postedProduct;
-        String returnString;
+    @GetMapping("")
+    public SimpleProduct getProductInformationByName(@RequestParam String name) {
+        SimpleProduct product;
 
         try {
-            postedProduct = productService.postNewProduct(newProduct);
+            product = productService.getProductInformationByName(name);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        return postedProduct;
+        return product;
+    }
+
+    @PostMapping("")
+    public Product postNewProduct(@RequestBody Product newProduct) {
+        return productService.postNewProduct(newProduct);
     }
 }
