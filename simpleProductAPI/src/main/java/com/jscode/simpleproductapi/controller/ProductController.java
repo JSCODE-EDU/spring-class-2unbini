@@ -1,9 +1,10 @@
 package com.jscode.simpleproductapi.controller;
 
-import com.jscode.simpleproductapi.dto.SimpleProduct;
+import com.jscode.simpleproductapi.dto.ProductDTO;
 import com.jscode.simpleproductapi.entity.Product;
 import com.jscode.simpleproductapi.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,13 +21,13 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public List<SimpleProduct> getAllProducts() {
+    public List<ProductDTO> getAllProducts() {
         return productService.findAll();
     }
 
     @GetMapping("/{id}")
-    public SimpleProduct getProductInformationWithID(@PathVariable Long id) {
-        SimpleProduct product;
+    public ProductDTO getProductInformationWithID(@PathVariable Long id) {
+        ProductDTO product;
 
         try {
             product = productService.getProductInformationWithID(id);
@@ -38,8 +39,8 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public SimpleProduct getProductInformationByName(@RequestParam String name) {
-        SimpleProduct product;
+    public ProductDTO getProductInformationByName(@RequestParam String name) {
+        ProductDTO product;
 
         try {
             product = productService.getProductInformationByName(name);

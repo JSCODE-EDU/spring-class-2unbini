@@ -3,11 +3,12 @@ package com.jscode.simpleproductapi.entity;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table
 @Entity
 @Getter
-public class Product {
+public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +16,6 @@ public class Product {
 
     @Column
     private String name;
-    private boolean isOnSale;
-    private int cost;
+    private String address;
+    private String telephoneNumber;
 }
