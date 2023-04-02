@@ -1,9 +1,11 @@
 package com.jscode.simpleproductapi.controller;
 
-import com.jscode.simpleproductapi.dto.Product;
+import com.jscode.simpleproductapi.entity.Product;
 import com.jscode.simpleproductapi.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -16,8 +18,13 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/{id}")
-    public String getProductInformationWithID(@PathVariable int id) {
+    @GetMapping("/all")
+    public List<Product> getAllProducts() {
+        return productService.findAll();
+    }
+
+    @GetMapping("")
+    public Product getProductInformationWithID(@RequestParam Long id) {
         Product product;
 
         try {
@@ -26,24 +33,11 @@ public class ProductController {
             throw new RuntimeException(e);
         }
 
-        return productService.generateReturnString(product);
-    }
-
-    @GetMapping("")
-    public String getProductInformationWithName(@RequestParam("name") String name) {
-        Product product;
-
-        try {
-            product = productService.getProductInformationWithName(name);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        return productService.generateReturnString(product);
+        return product;
     }
 
     @PostMapping("")
-    public String postNewProduct(@RequestBody Product newProduct) {
+    public Product postNewProduct(@RequestBody Product newProduct) {
         Product postedProduct;
         String returnString;
 
@@ -53,6 +47,6 @@ public class ProductController {
             throw new RuntimeException(e);
         }
 
-        return productService.generateReturnStringWhenPosted(postedProduct);
+        return postedProduct;
     }
 }
